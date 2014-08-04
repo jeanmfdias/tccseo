@@ -1,0 +1,691 @@
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Otimização de Sites para mecanismos de busca}
+\autor{Jean Miguel Ferreira Dias}
+\local{Franca}
+\data{2014}
+\orientador{Leandro Borges}
+\instituicao{%
+  Centro Universitário de Franca - Uni-FACEF
+  }
+\tipotrabalho{Trabalho de Conclusão de Curso}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de Conclusão para o curso de Sistemas de Informação}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+\begin{fichacatalografica}
+	\vspace*{\fill}					% Posição vertical
+	\hrule							% Linha horizontal
+	\begin{center}					% Minipage Centralizado
+	\begin{minipage}[c]{12.5cm}		% Largura
+	
+	\imprimirautor
+	
+	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	\imprimirlocal, \imprimirdata-
+	
+	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+	
+	\hspace{0.5cm}
+	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+	\imprimirdata.}\\
+	
+	\hspace{0.5cm}
+		1. Palavra-chave1.
+		2. Palavra-chave2.
+		I. Orientador.
+		II. Universidade xxx.
+		III. Faculdade de xxx.
+		IV. Título\\ 			
+	
+	\hspace{8.75cm} CDU 02:141:005.7\\
+	
+	\end{minipage}
+	\end{center}
+	\hrule
+\end{fichacatalografica}
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+    
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+        
+   Trabalho aprovado. \imprimirlocal, 24 de novembro de 2012:
+
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+   \assinatura{\textbf{Professor} \\ Convidado 1}
+   \assinatura{\textbf{Professor} \\ Convidado 2}
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+   \begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+  
+\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{ Este trabalho é dedicado aos corajosos que buscam\\ aumentar as visitas em seus blogs.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Os agradecimentos principais são direcionados à Gerald Weber, Miguel Frasson,
+Leslie H. Watter, Bruno Parente Lima, Flávio de Vasconcellos Corrêa, Otavio Real
+Salvador, Renato Machnievscz\footnote{Os nomes dos integrantes do primeiro
+projeto abn\TeX\ foram extraídos de
+\url{http://codigolivre.org.br/projects/abntex/}} e todos aqueles que
+contribuíram para que a produção de trabalhos acadêmicos conforme
+as normas ABNT com \LaTeX\ fosse possível.
+
+Agradecimentos especiais são direcionados ao Centro de Pesquisa em Arquitetura
+da Informação\footnote{\url{http://www.cpai.unb.br/}} da Universidade de
+Brasília (CPAI), ao grupo de usuários
+\emph{latex-br}\footnote{\url{http://groups.google.com/group/latex-br}} e aos
+novos voluntários do grupo
+\emph{\abnTeX}\footnote{\url{http://groups.google.com/group/abntex2} e
+\url{http://abntex2.googlecode.com/}}~que contribuíram e que ainda
+contribuirão para a evolução do \abnTeX.
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{``Não vos amoldeis às estruturas deste mundo, \\
+		mas transformai-vos pela renovação da mente, \\
+		a fim de distinguir qual é a vontade de Deus: \\
+		o que é bom, o que Lhe é agradável, o que é perfeito.\\
+		(Bíblia Sagrada, Romanos 12, 2)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+ Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
+ objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
+ destes itens dependem do tipo de resumo (informativo ou indicativo) e do
+ tratamento que cada item recebe no documento original. O resumo deve ser
+ precedido da referência do documento, com exceção do resumo inserido no
+ próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
+ resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
+ ponto e finalizadas também por ponto.
+
+ \textbf{Palavras-chaves}: latex. abntex. editoração de texto.
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   This is the english abstract.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Key-words}: latex. abntex. text editoration.
+ \end{otherlanguage*}
+\end{resumo}
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+  \item[SEO] Search Engine Optimiztion
+  \item[SEM] Search Engine Marketing
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+\begin{simbolos}
+  \item[$ \Gamma $] Letra grega Gama
+  \item[$ \Lambda $] Lambda
+  \item[$ \zeta $] Letra grega minúscula zeta
+  \item[$ \in $] Pertence
+\end{simbolos}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+% ----------------------------------------------------------
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+% ----------------------------------------------------------
+
+SEO é um sigla que significa Search Engine Optimization na tradução Otimização para Motores de Busca, que se refere a uma técnica responsável por fazer um website alcançar melhor visibilidade nas buscas, em ferramentas como o Google, Bing, Yahoo, entre outros. 
+
+Jerkovic (2009) define SEO como um agregado de todo o trabalho necessário para produzir um alto volume de referências bem-sucedidas oriundas de mecanismos de busca, diretórios web e outros websites, com o objetivo final de popularizar o website.
+
+As técnicas usadas para melhorar o posicionamento de um website dentro dos grandes buscadores são várias, desde análises internas e externas do website, trabalho com mídias sociais, criação de links em sites de terceiros, otimizar conteúdo para palavras-chaves, criação de conteúdo e outras tarefas.
+
+Mas antes de aprofundar em no tema do SEO precisamos entender alguns conceitos que servem como base para conseguir melhor consciência para implantar as técnicas de otimização em seu website. Com isso, para entender qual o motivo de otimizar um website, e quais fatores deve ser levados em consideração, é necessário entender os conceitos básicos do SEO. 
+
+
+% ----------------------------------------------------------
+% PARTE
+% ----------------------------------------------------------
+% \part{Referenciais teóricos}
+% ----------------------------------------------------------
+
+% ---
+% Capitulo de revisão de literatura
+% ---
+
+\chapter{Otimização para Mecanismos de Busca}
+
+\section{Motores de Busca}
+
+Os motores de busca surgiram logo após a criação da Internet como conhecemos hoje. Segundo Ledford (2008) a primeira ferramenta de busca foi lançado em 1990, chamado Archie. A necessidade de se criar ferramentas que possibilitassem efetuar buscas dentro da Internet apareceu por causa da complexidade que era encontrar arquivos ou textos dentro da web.
+
+A forma em que era encontrado um texto ou arquivos no começo da Internet não era nada parecido com o que nós temos hoje. Para você ter acesso a algo, a Internet baseava-se em um conjunto de pastas organizadas e para se ter acesso era necessário ter acesso por um protocolo de rede chamado de FTP (File Transfer Protocol, em português Protocolo de Transferência de Arquivos), onde permitia que aos usuários obter o acesso a estas pastas e procurar os arquivos que lhe sejam uteis.
+
+Encontrar algo desta forma era bastante trabalhoso, pois consistia do usuário ter que navegar de pasta em pasta para achar a arquivo que o mesmo procurava. É lógico que existiam atalhos que levava o usuário até o seu destino rapidamente, mas era necessário saber onde encontrar estes atalhos, geralmente fornecidos quando você já sabia qual o arquivo exato você está procurando.
+
+Com isso o processo para encontrar um arquivo na Internet para Ledford (2008) na prática, era um exercício difícil e demorado de paciência. Contudo em 1990 o estudante da universidade de McGill, em Montreal – Canadá, Alan Emtange criou a primeira ferramenta, que se tem registro, para busca na Internet chamada Archie, que era um índice com os arquivos da Internet.
+
+A forma em que este programa denominado como Archie trabalhava está muito distante de como funciona os mecanismos de busca hoje em dia. Pois seu trabalho consistia em baixar um lista de todos os arquivos dentro daquela pasta na Internet, e está lista era baixada para dentro de um banco de dados de websites, podendo assim ser consultado disponibilizando a informação de um forma mais rápida.
+
+O Archie servia apenas para listar arquivos de um FTP, não para procurar por arquivos relacionados a termo de busca, como acontece com os buscadores atualmente. Em 1991 outro estudante Mark McCahill da Universidade de Minnesota, percebeu que se existia a possibilidade de indexar arquivos, que era o que o Archie fazia, também era possível fazer busca de textos puro em referência de arquivos.
+
+A partir disso como não existia nenhum aplicativo que realizava essa tarefa, ele criou o Gopher, um programa que permite indexar arquivos em texto puro, na figura 1.1 é possível ver como era o índice do programa, que segundo Ledford (2008) veio a se tornar os primeiros websites da Internet pública. Com isso a forma com que realmente funciona as buscas atualmente começou a amadurecer.
+
+\begin{figure}[hbtp]
+\caption{Índice do Gopher}
+\centering
+\includegraphics[totalheight=0.5\textheight]{img/indice-gopher.png}
+\label{who}
+\legend{Fonte: Wikipedia, 2008}
+\end{figure}
+
+Mas para o Gopher funcionar com da maneira esperada foi necessária a criação de duas novas aplicações a Veronica (Very Easy Easy Rodent-Oriented Net-wide Index to Computerized, na tradução Índice Bastante Fácil para Arquivos Computadorizados em Rede) e Jughead (Jonzy’s Universal Gopher Hierarchy Excavation and Display, na tradução Escavação e Exibição Universal da Hierarquia do Gopher por Jonzy) que serviam para procurar os arquivos indexados nos índices do Gopher, denominado de Gopher Index System (na tradução Sistema de Índices do Gopher).
+
+Mas só em 1993 desenvolvido por Matthew Gray aplicação denominada de Wandex, foi o primeiro programa a fazer tanto a indexação como também a busca nos índice da páginas da web. Segundo Ledford (2008) essa tecnologia foi o primeiro programa a vascular a web, e posteriormente se tornou a base para todos os crawlers de busca. No período de 1993 até o início do século 2000, foram desenvolvidos basicamente todos os motores de busca mais conhecidos do mercado, como o Yahoo em 1994, Google em 1997 e o MSN Search em 1998 que veio a se chamar Bing em 2008.
+
+Estes três mecanismos de busca, Google, Yahoo e Bing são os mais populares do mercado na parte ocidental do globo, sendo o Google criado por Larry Page e Sergey Brin na Universidade de Stanford, em pesquisa feita pela comScore \url{http://goo.gl/IkS0uZ} em Março de 2014 nos Estados Unido, ele ocupa 67,5\% das preferências de busca, seguido pelo Bing com 18,6\%, Yahoo com 10,1\% e outros com 3,8\%.
+
+Dentro deste mercado de motores de busca Jerkovic (2009) separa os mecanismos de buscas em alguns grupos, que são: motores de busca de primários, mecanismos de busca secundários, mecanismos de busca regionais, motores de busca verticais, mecanismos baseados em web spiders, motores de busca híbridos e baseados em metabusca.
+
+\section{Funcionamento de um Motor de Busca}
+
+No ponto de vista de um usuário final o motor de busca é apenas um simples website, que quando você precisa de procurar por algum termo na web você simplesmente digite essa palavra ou expressão em um campo, e a seguir pressiona a tecla “Enter” ou clica em pesquisar, onde que a partir destes pequenos passos vão surgir milhares de respostas para aquele termo digitado.
+
+Mas essa definição fica por parte de um usuário final que não compreende realmente o que está acontecendo no back end do motor de busca. Vamos dividir o motor de busca em duas partes o back end e o front end, onde que no back end do motor contém a parte responsável por tudo funcionar e as buscas retornarem resultados, e o front end do motor apenas fica responsável por exibir para o usuário final estes resultados.
+
+O back end de um motor de busca é apenas um software que segundo Ledford (2008) utiliza-se de aplicativos para coletar informações sobre páginas web. Estes aplicativos são chamados de crawlers, spiders ou robôs web. Ledford (2008) classifica estas informações coletadas como: palavras-chaves, expressões que represente o conteúdo da página web como um todo, a URL da página, e a estrutura dos links que saem e entram na página.
+
+Com isso o motor de busca armazena estas informações a respeito de uma página web em um banco de dados. No front end que é a página web onde o usuário final digita seu termo para busca, o motor executa as seguintes tarefas: o motor irá pegar este termo digitado, ele fará uma consulta no banco de dados procurando se existe alguma página da web que contém aquele termo e após isso retornará todos os resultados encontrados exibindo-os ao usuário que efetuou a busca.
+
+\section{Tipos de Mecanismos}
+
+\subsection{Mecanismos Primários}
+
+Para Jerkovic (2009) Bing, Google e Yahoo são mecanismos de busca primários, pois os três motores detêm maior fatia do mercado de pesquisas do mundo. Nesses tipos de mecanismo funcionam de forma que eles vasculham todas as páginas da Internet criando enormes banco de dados de índices, utilizados nas buscas.
+
+Estes mecanismos de buscas primários são capazes de indexar a maioria ou até todos os websites da Internet, onde que Ledford (2008) fala que a diferença no resultados deles fica apenas por conta de como o algoritmo do motor funciona, isto faz com que o mesmo termo procurado em um motor resulte em diferentes resultados em outro.
+
+\subsection{Mecanismos Secundários}
+
+Os mecanismos de busca secundários não tem o mesmo volume de acessos de um mecanismos principais pois geralmente são voltados para públicos mais específicos, isso faz com que o número de usuários que utilizam um mecanismo de busca primário seja maior que o motores de busca secundários.
+
+No entanto mesmo Jerkovic (2009) apresentar que estes mecanismos são menos renomados e não tão populares quanto um mecanismo de busca primário, Ledford (2008) defende falando que para buscas regionais ou mais focadas eles podem ser bastante uteis. Motores de buscas secundário podem ser citados como: Lycos, Ask, LookSmart, entre outros. 
+
+\subsection{Mecanismos Regionais}
+
+Mesmo os mecanismos de buscas primários seja os quem geram maior trafego na Internet, existem os mecanismos regionais que são motores mais específicos para buscas em determinadas regiões, como o Baidu na China, que quando você utiliza-lo seus resultados de busca são mais focados em páginas da Internet daquela região.
+
+\subsection{Mecanismos Vericais}
+
+Jerkovic (2009) chama-os de mecanismos de busca especializados, pelo fato de que os motores de buscas verticais pesquisam resultados mais específicos de um único tema, por exemplo um mecanismo de busca que contém apenas resultados para um único tópico como esportes, arte, ciências, literatura entre outros.
+Mecanismos baseados em web spiders
+
+Para Jerkovic (2009) os mecanismos de busca baseados em web spiders são definos assim:
+
+
+\begin{citacao}
+Mecanismos de busca baseados em web spiders usam programas, o web spider, para criar seus índices de bancos de dados. Além do Google, Yahoo! e Microsoft, essa classe de mecanismo de busca inclui:
+
+\item Cuil (http://www.cuil.com)
+\item Exalead (http://www.exalead.com)
+\item Gigablast (http://www.gigablast.com)
+\item Teoma/Ask (http://www.ask.com)
+\item Walhello (http://www.walhello.com)
+\cite[5.3]{NBR10520:2002}.
+\end{citacao}
+
+\subsection{Mecanismos Hibridos}
+
+No mercado atual de buscas alguns mecanismos apresentam várias formas de efetuar pesquisa, por diversas categorias diferentes tal como ocorre nos motores de busca vertical. Estes mecanismo de busca são classificados como mecanismos de busca híbridos, que segundo Jerkovic (2009) é a unificação de uma variedade de resultados, onde é possível incluir resultados de spiders, diretórios web, notícias, produtos entre outros.
+
+Motores de busca como Bing, Google e Yahoo! já adotaram este modelo de busca, que Jerkovic (2009) denomina de Busca Universal, onde que a ideias basicamente e informar múltiplos resultados para um termo, tornando assim a busca mais rica e completa. Na figura 1.2 é possível ver estes detalhes.
+
+Na figura 1.2 é possível perceber como funciona um motor de busca hibrido, pelo fato da busca ser pela palavra “carro” é possível perceber que o mecanismo de busca retorna vários resultados diferentes, como os links de publicidade, uma área onde se encontra imagens sobre o termo procurado.
+
+\begin{figure}[hbtp]
+\caption{Resultados Variados do Bing}
+\centering
+\includegraphics[totalheight=0.5\textheight]{img/resultados-bing.jpg}
+\label{who}
+\legend{Fonte: o Autor}
+\end{figure}
+
+\subsection{Mecanismos Metabusca}
+
+Jerkovic (2009) cita que se o usuário buscar pelo mesmo termo em diferentes mecanismos de buscas a base de spiders, eles lhe retornaram resultados diferentes, que ao contrário dos motores baseados em metabusca é organizar e juntar resultados de vários motores, fazendo com que assim aumente a qualidade nos resultados retornados.
+
+\section{Rôbos}
+
+Os aplicativos responsáveis por alimentar o banco de dados de um motor de busca são conhecidos como Spiders, Crawlers ou Robôs Web, que tem como tarefa básica percorrer por todas as páginas web procurando por pelas informações que são armazenadas no banco de dados do motor de busca, Ledford (p7, 2008) explica o que são estes três programas da seguinte forma:
+
+\begin{citacao}
+Essas pequenas criaturas são programas que literalmente vasculham a web, catalogando dados para que estes possam ser buscas pelos usuários. No sentido mais básico, todos os três programas – crawlers, spiders e robôs – são essencialmente a mesma coisa. Todos eles coletam informações sobre todas as URLs da web.
+\cite[p7]{NBR10520:2002}.
+\end{citacao}
+
+Com isso todas estas informações coletadas por estes três programas são catalogadas de acordo com sua URL (Uniform Resource Locator, na tradução Localizador Padrão de Recursos) para que assim possa ser encontrada após uma busca executada pelo usuário.
+
+Jerkovic (2009) diz que o termo spider, robô e crawler representam a mesma coisa, no qual são aplicativos automatizados que tem como proposito de navegar pela Internet no objetivo de encontrar e fornecer ao seu mecanismo de busca o maior número de websites. Portanto nas próximas vezes que o texto se referir a spiders estará fazendo referência aos três de uma vez só.
+
+Os Spiders atuam de forma aleatória dentro da web, eles navegam pelos websites rastreando não só os links mas também qualquer outro tipo de documento, como arquivos de imagens e vídeos. O acesso dos spiders aos websites podem ser várias vezes ou raramente, que segundo Jerkovic (2009) acontece a partir do tamanho do conteúdo do website.
+ 
+Mas Jerkovic (2009) afirma também que os spiders não irão visitar seu website uma única vez, pois a partir do momento que um spider rastrear a página de seu website ele irá sempre voltar para detectar alterações, adições e exclusões dentro do conteúdo ou da página.
+
+Os spiders de acordo com Ledford (2008) trabalham da seguinte forma: quando eles são lançados na web, eles recebem uma lista de websites que são o ponto de partida para os spiders, e a partir deste momento ele saem rastreando as páginas e encontrando novos links para percorrer.
+
+Estes links que os spiders encontram podem ao mesmo tempo leva-los a outras páginas do mesmo website, como também podem leva-lo completamente para fora deste website. Com isso ele segue este processo até encontrar uma página do website que não leve para lugar nenhum, a partir deste ponto ele recomeça o processo até que todos os links sejam mapeados, segundo Ledford (2008). 
+
+\chapter{Tipos de Busca}
+
+Dentro do cenário de SEO, muitos profissionais se confundem ele com o SEM (Marketing nos mecanismos de Busca) que são os anúncios de “pay-per-click” (Pague pelo Clique, PPC), por exemplo o Google AdWords. Embora ambos tenha alguns elementos em comum, como o foco em palavras-chaves, as implementações de SEM são bem mais simples, e alcançam resultados praticamente de forma imediata, pelo fato de serem formas de campanhas pagas, o SEO para Jerkovic (2009) é a forma mais próxima de uma propaganda gratuita que se pode chegar, pois estas técnicas lhe permitem aumentar sua visibilidade de forma natural, não necessitando pagar para aparecer como a primeira opção.
+
+Mas entretanto não se pode dizer que para fazer SEO em um website não precisará desembolsar algum valor inicial, pelo fato do website estar posicionado nas buscas orgânicas, onde ao contrário do PPC, não necessita pagar para estar naquela posição. Fazer SEO exige que se faça investimentos, e seus resultados serão alcançados a longo prazo.
+
+Jerkovic (2009) apresenta a seguinte tabela apontando as vantagens e desvantagens entre SEO ou PCC:
+
+% tabela 1.1
+
+\begin{table}[htb]
+\ABNTEXfontereduzida
+\caption[Vantagens e Desvantagens SEO x PPC]{Vantagens e Desvantagens SEO x PPC}
+\label{tab-nivinv}
+\begin{center}
+\begin{tabular}{p{2.6cm}|p{6.0cm}|p{2.25cm}|p{3.40cm}}
+  %\hline
+   \textbf{SEO} \\
+   \textbf{Vantagens} & \textbf{Desvantagens} \\
+    \hline
+    Benefícios a longo prazo & Resultados iniciais demoram \\
+    \hline
+    Aumenta a credibilidade pelo visitante & Para alguns casos não há garantias \\
+   \textbf{PPC} \\
+   \textbf{Vantagens} & \textbf{Desvantagens} \\
+    \hline
+    Tráfego instantâneo & Gasta recursos rapidamente \\
+    \hline
+    Facilidade de implementação & As melhores posições são para quem paga mais \\
+    \hline
+    Facilidade de administração & Desconfiança \\
+    \hline
+    Menor investimento para manutenção & Visitantes param quando para o investimento \\
+   % \hline
+\end{tabular}
+\end{center}
+\legend{Fonte: Guerreiro SEO}
+\end{table}
+
+Com estes itens começa a perceber quais os grandes desafios dentro do SEO que podem ser elencados como a concorrência, falta de garantias, alterações constantes no ranking e fatores relacionados a tempo.
+
+No mercado para cada setor você encontrará uma serie de competidores, onde que sua empresa, para obter um destaque ao olhos do consumidor necessita mostrar algum diferencial. No mundo virtual funciona da mesma forma existem vários concorrentes no mesmo segmento. Em pesquisa feita pela NetCraft em Abril de 2014, indica que existem 958 milhões de websites, 34 milhões a mais que no mês de março \url{http://goo.gl/zLvFD}.
+
+De acordo com a ONU (Organização das Nações Unidas), em junho de 2013 a população mundial era de 7,2 bilhões, estes dados é possível afirmar que existe aproximadamente um website para cada sete pessoas \url{http://goo.gl/dcCDn6}.
+
+Mas dentro de SEO segundo Jerkovic (2009) ninguém pode verdadeiramente garantir o primeiro lugar no Google, Yahoo! ou Bing. Pois para alcançar um bom ranqueamento dentro deste grandes buscadores, envolve vários aspectos que definem que seu website esteja em posições relevantes. Mas se você aplica todas as estratégias do SEO, tendo um conteúdo de qualidade, melhores posições e popularidade virão com o tempo.
+
+Um outro ponto que afeta o posicionamento de seu website nos mecanismos de busca, fica por conta dos milhares domínios que estão competindo em busca de maior relevância, com isso ganha-se um aumento grande em sua concorrência. Por este motivo os buscadores vivem em constante melhoria para sempre estar retornando resultados relevantes em suas pesquisas.
+
+Mas esse é um fator contempla dois lados, que é possível dizer que existe fatores positivos que auxiliam seu website a ganhar posições e melhorar dentro das buscas, e fatores negativos que servem apenas para atrapalhar seu website fazendo com que ele perda posições em páginas ou nem apareça nos resultados.
+
+Um outro ponto que influencia no SEO é a questão do tempo, pois aplicar essas práticas e conceitos que melhora sua relevância, não é uma tarefa que lhe resultara em retorno a curto prazo. Ele lhe proporciona resultados a longo prazo e de forma natural. Isto faz com que em algum momento seu website comece a receber visitantes a partir de outros buscadores, além de outros websites que estarão vinculados ao seu. 
+
+\section{Busca Organica}
+
+Busca Organica é toda aquela área dos resultados, que aparecem naturalmente.
+
+\section{Busca Paga}
+
+Busca Paga é toda aquela área dos resultados, quem aparecem pelo fato de algum estar patrocinando aquela busca.
+
+
+\chapter{Processos para Otimização de um Website}
+
+\section{Corpo da Página}
+
+Corpo da página se define pela organização de tags de HTML, atributos de uma tag tais como o title ou alt. Além da adição de tags para melhorar em redes sóciais e também atributos do Schema.org.
+
+\section{Links Internos e Externos}
+
+Links Building
+
+\section{Conteúdo}
+
+Textos de qualidade para as páginas
+
+\section{Ferramentas de Analise}
+
+Webmaster Tools
+Google Analytcs
+SemRush
+
+\section{Campanhas}
+
+Google Adwords
+
+
+
+\chapter{Aplicação}
+
+Este trabalho tem como objetivo apresentar na prática os conceitos e técnicas para otimização de um website para os mecanismos de busca, onde que no estudo de caso apresentado o mecanismo em questão será o Google. Dentro deste ambiente será colocado em prática todas as técnicas já descritas para que o website em questão possa conseguir uma boa classificação dentro de uma busca em específico.
+
+Como tema para o website para o ser utilizado como estudo de caso do projeto foi escolhido um blog com o tema sobre SEO, onde que este blog é referente ao tema deste trabalho. O objetivo da escolha de um blog para ser o website foi em cima do fato de que dentro de um website deste genêro é possivel explorar todos os conceitos e técnicas para otimização de um website.
+
+\section{Ferramentas Utilizadas}
+
+Ferramentas utilizadas foram o Ruby On Rails com banco de dados MySQL hospedado em um servidor na Digital Ocean.
+
+\section{Análise de Evolução}
+
+No periodo desda publicação que foi feita em 23 de Julho de 2014 o website já havia aparecido nas primeiras páginas da busca.
+
+
+% ----------------------------------------------------------
+% Finaliza a parte no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ----------------------------------------------------------
+\phantompart
+
+% ---
+% Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
+% ---
+\chapter*[Conclusão]{Conclusão}
+\addcontentsline{toc}{chapter}{Conclusão}
+% ---
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+\partanexos
+
+% ---
+\chapter{Modelagem do banco de dados do Blog}
+% ---
+
+
+\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+%---------------------------------------------------------------------
+
+\end{document}

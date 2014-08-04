@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo_evento: MyString
+  data: 2014-07-05
+  horario: 2014-07-05 22:28:34
+  detalhes: MyText
+  url_amigavel: MyString
+  meta_titulo: MyString
+  meta_descricao: MyString
+  titulo_link: MyString
+  status: 1
+
+two:
+  titulo_evento: MyString
+  data: 2014-07-05
+  horario: 2014-07-05 22:28:34
+  detalhes: MyText
+  url_amigavel: MyString
+  meta_titulo: MyString
+  meta_descricao: MyString
+  titulo_link: MyString
+  status: 1

@@ -1,0 +1,66 @@
+<%= content_for :seo do %>
+	<title>Calendário de Eventos do TCC de SEO</title>
+  <meta name="description" content="">
+<% end %>
+
+<%= render :partial => "home/nav" %>
+
+<div id="main">
+	<div class="container">
+		<div class="row main-row">
+			<div class="4u">
+
+				<%= render :partial => "home/autor" %>
+			
+				<section>
+					<h2>Veja por categoria</h2>
+					<div>
+						<div class="row">
+							<% if !@list_categorias1.blank? %>
+								<div class="6u">
+									<ul class="link-list">
+										<% @list_categorias1.each do |categoria| %>
+											<li><a data-no-turbolink="true" title="<%= categoria.titulo_link %>" href="<%= root_url %>/<%= categoria.url_amigavel %>"><%= categoria.nome %></a></li>
+										<% end %>
+									</ul>
+								</div>
+							<% end %>
+							<% if !@list_categorias2.blank? %>
+								<div class="6u">
+									<ul class="link-list">
+										<% @list_categorias2.each do |categoria| %>
+											<li><a data-no-turbolink="true" title="<%= categoria.titulo_link %>" href="<%= root_url %>/<%= categoria.url_amigavel %>"><%= categoria.nome %></a></li>
+										<% end %>
+									</ul>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</section>
+
+				<%= render :partial => "home/aside" %>
+				
+			</div>
+			<div class="8u skel-cell-important">
+
+				<% if !@eventos.blank? %>
+					<% @eventos.each do |evento| %>
+						<section class="right-content calendar">
+							<% if evento.status == 0 %>
+								<h2 class="tachado"><a data-no-turbolink="true" title="<%= evento.titulo_link %>" href="<%= root_url %>/evento/<%= evento.url_amigavel %>"><%= evento.titulo_evento %> | <%= evento.data.strftime("%m/%Y") %></a></h2>
+							<% else %>
+								<h2><a data-no-turbolink="true" title="<%= evento.titulo_link %>" href="<%= root_url %>/evento/<%= evento.url_amigavel %>"><%= evento.titulo_evento %> | <%= evento.data.strftime("%m/%Y") %></a></h2>
+								<p><%= evento.detalhes.html_safe %></p>
+								<p>Data e Hora: <strong><%= evento.data.strftime("%d/%m/%Y") %></strong> - <span><%= evento.horario.strftime("%H:%M") %></span></p>
+								<p>Local: <%= evento.local %></p>
+							<% end %>
+						</section>
+					<% end %>
+				<% end %>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render :partial => "home/footer" %>

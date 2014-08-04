@@ -1,0 +1,23 @@
+<div id="header-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="12u">
+				
+				<header id="header">
+					<h1><a data-no-turbolink="true" title="Blog do TCC sobre SEO" href="<%= root_url %>/" id="logo">TCC SEO</a></h1>
+					<nav id="nav">
+						<a data-no-turbolink="true" title="TCC SEO - Últimos artigos publicados" href="<%= root_url %>/" class="<%= @ativo == 'home' ? 'current-page-item' : nil %>">Home</a>
+						<% if @ativo == 'category' %>
+							<% if !@categoria.blank? %>
+								<a data-no-turbolink="true" title="TCC SEO - <%= @categoria.titulo_link %>" href="<%= root_url %>/<%= @categoria.url_amigavel %>" class="current-page-item"><%= @categoria.nome %></a>
+							<% end %>
+						<% end %>
+						<a data-no-turbolink="true" title="Calendário do TCC sobre SEO" href="<%= root_url %>/calendario" class="<%= @ativo == 'calendar' ? 'current-page-item' : nil %>">Calendário</a>
+						<a data-no-turbolink="true" title="Sobre blog e os autores do TCC de SEO" href="<%= root_url %>/sobre" class="<%= @ativo == 'about' ? 'current-page-item' : nil %>">Sobre</a>
+					</nav>
+				</header>
+			
+			</div>
+		</div>
+	</div>
+</div>

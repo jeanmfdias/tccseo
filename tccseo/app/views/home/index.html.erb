@@ -1,0 +1,108 @@
+<%= content_for :seo do %>
+	<title>TCC SEO - Blog do TCC de Jean Miguel sobre SEO</title>
+  <meta name="description" content="">
+<% end %>
+
+<%= render :partial => "home/nav" %>
+
+<%= render :partial => "home/intro" %>
+
+<div id="main">
+	<div class="container">
+		<div class="row main-row">
+			<div class="4u">
+				
+				<section>
+					<h2>Bem vindo ao TCC SEO!</h2>
+					<p>Este blog <strong>sobre seo</strong>, foi criado com o objetivo de divulgar informações sobre o decorrer do desenvolvimento do trabalho de conclusão de curso do aluno de Sistemas de Informação Jean Miguel Ferreira Dias, do Centro Universitário Uni-FACEF.</p>
+					<footer class="controls">
+						<a data-no-turbolink="true" title="Veja mais sobre o TCC SEO" href="<%= root_url %>/sobre" class="button">Veja mais</a>
+					</footer>
+				</section>
+			
+			</div>
+
+			<div class="4u">
+				
+				<%= render :partial => "home/autor" %>
+			
+			</div>
+			
+			<div class="4u">
+			
+				<section>
+					<h2>Veja por categoria</h2>
+					<div>
+						<div class="row">
+							<% if !@list_categorias1.blank? %>
+								<div class="6u">
+									<ul class="link-list">
+										<% @list_categorias1.each do |categoria| %>
+											<li><a data-no-turbolink="true" title="<%= categoria.titulo_link %>" href="<%= root_url %>/<%= categoria.url_amigavel %>"><%= categoria.nome %></a></li>
+										<% end %>
+									</ul>
+								</div>
+							<% end %>
+							<% if !@list_categorias2.blank? %>
+								<div class="6u">
+									<ul class="link-list">
+										<% @list_categorias2.each do |categoria| %>
+											<li><a data-no-turbolink="true" title="<%= categoria.titulo_link %>" href="<%= root_url %>/<%= categoria.url_amigavel %>"><%= categoria.nome %></a></li>
+										<% end %>
+									</ul>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+		<div class="row main-row">
+			<div class="6u">
+			
+				<section>
+					<h2>Últimas publicações do blog tcc seo</h2>
+					<p>Confira as últimas publicações do blog sobre o tcc seo de Jean Miguel.</p>
+					<ul class="big-image-list">
+						<% if !@artigos.blank? %>
+							<% @artigos.each do |artigo| %>
+								<% if artigo.url_amigavel != @artigo.url_amigavel %>
+									<li>
+										<a data-no-turbolink="true" title="<%= artigo.titulo_link %>" href="<%= root_url %>/<%= artigo.categoria.url_amigavel %>/<%= artigo.url_amigavel %>">
+											<%= image_tag artigo.imagem, :class => "left", :title => artigo.titulo_imagem %>
+										</a>
+										<h3><%= artigo.titulo %></h3>
+										<p><%= truncate_html artigo.conteudo, length: 125 %></p>
+									</li>
+								<% end %>
+							<% end %>
+						<% else %>
+							<li><h3>Obrigado por visitar o blog</h3><p>Não existem artigos publicados. Volte mas tarde.</p></li>
+						<% end %>
+					</ul>
+				</section>
+
+			</div>
+			<div class="6u">
+			
+				<article class="blog-post">
+					<% if !@artigo.blank? %>
+						<h2>Confira a nova publicação</h2>
+						<a data-no-turbolink="true" title="<%= @artigo.titulo_link %>" href="<%= root_url %>/<%= @artigo.categoria.url_amigavel %>/<%= @artigo.url_amigavel %>">
+							<%= image_tag @artigo.imagem, :class => "top blog-post-image", :title => @artigo.titulo_imagem %>
+						</a>
+						<h3><%= @artigo.titulo %></h3>
+						<p><%= truncate_html @artigo.conteudo, length: 350 %></p>
+						<footer class="controls">
+							<a data-no-turbolink="true" title="<%= @artigo.titulo_link %>" href="<%= root_url %>/<%= @artigo.categoria.url_amigavel %>/<%= @artigo.url_amigavel %>" class="button">Continue lendo</a>
+						</footer>
+					<% end %>
+				</article>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render :partial => "home/footer" %>

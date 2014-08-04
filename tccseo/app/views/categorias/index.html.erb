@@ -1,0 +1,68 @@
+<%= content_for :seo do %>
+	<% if !@categoria.blank? %>
+		<title><%= @categoria.meta_titulo %></title>
+	  <meta name="description" content="<%= @categoria.meta_descricao %>">
+	<% end %>
+<% end %>
+
+<%= render :partial => "home/nav" %>
+
+<div id="main">
+	<div class="container">
+		<div class="row main-row">
+			<div class="3u">
+
+				<section>
+					<h2>Alguns artigos publicados</h2>
+					<ul class="link-list">
+						<% if !@randArticles.blank? %>
+							<% @randArticles.each do |ra| %>
+								<li><a data-no-turbolink="true" title="<%= ra.titulo_link %>" href="<%= root_url %>/<%= ra.categoria.url_amigavel %>/<%= ra.url_amigavel %>"><%= ra.titulo %></a></li>
+							<% end %>
+						<% end %>
+					</ul>
+				</section>
+
+				<section>
+					<% if !@categoria.blank? %>
+						<h2><%= @categoria.nome %></h2>
+						<p><%= @categoria.descricao %></p>
+					<% end %>
+				</section>
+			
+			</div>
+			<div class="6u skel-cell-important">
+				
+				<% if !@artigos.blank? %>
+					<% @artigos.each do |artigo| %>
+						<section class="middle-content">
+							<h2><a data-no-turbolink="true" title="<%= artigo.titulo_link %>" href="<%= root_url %>/<%= artigo.categoria.url_amigavel %>/<%= artigo.url_amigavel %>"><%= artigo.titulo %></a></h2>
+							<p><%= truncate_html artigo.conteudo, length: 500 %></p>
+						</section>
+					<% end %>
+				<% end %>
+			
+			</div>
+			<div class="3u">
+
+				<%= render :partial => "home/autor" %>
+			
+				<section>
+					<h2>Veja por categoria</h2>
+					<ul class="link-list">
+						<% if !@list_categorias.blank? %>
+							<% @list_categorias.each do |categoria| %>
+								<li><a data-no-turbolink="true" title="<%= categoria.titulo_link %>" href="<%= root_url %>/<%= categoria.url_amigavel %>"><%= categoria.nome %></a></li>
+							<% end %>
+						<% end %>
+					</ul>
+				</section>
+
+				<%= render :partial => "home/aside" %>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render :partial => "home/footer" %>

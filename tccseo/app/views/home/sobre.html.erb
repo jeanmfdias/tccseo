@@ -1,0 +1,56 @@
+<%= content_for :seo do %>
+	<title>Sobre o TCC de SEO</title>
+  <meta name="description" content="">
+<% end %>
+
+<%= render :partial => "home/nav" %>
+
+<div id="main">
+	<div class="container">
+		<div class="row main-row">
+			<div class="4u">
+
+				<%= render :partial => "home/autor" %>
+			
+				<section>
+					<h2>Veja por categoria</h2>
+					<div>
+						<div class="row">
+							<% if !@list_categorias1.blank? %>
+								<div class="6u">
+									<ul class="link-list">
+										<% @list_categorias1.each do |categoria| %>
+											<li><a data-no-turbolink="true" title="<%= categoria.titulo_link %>" href="<%= root_url %>/<%= categoria.url_amigavel %>"><%= categoria.nome %></a></li>
+										<% end %>
+									</ul>
+								</div>
+							<% end %>
+							<% if !@list_categorias2.blank? %>
+								<div class="6u">
+									<ul class="link-list">
+										<% @list_categorias2.each do |categoria| %>
+											<li><a data-no-turbolink="true" title="<%= categoria.titulo_link %>" href="<%= root_url %>/<%= categoria.url_amigavel %>"><%= categoria.nome %></a></li>
+										<% end %>
+									</ul>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</section>
+
+				<%= render :partial => "home/aside" %>
+				
+			</div>
+			<div class="8u skel-cell-important">
+
+				<section class="right-content">
+					<h2>Sobre o TCC SEO</h2>
+					<p></p>
+				</section>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render :partial => "home/footer" %>

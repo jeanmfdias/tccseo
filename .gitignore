@@ -1,0 +1,15 @@
+/tccseo/.bundle
+/tccseo/config/database.yml
+/tccseo/log/*.log
+/tccseo/tmp
+/tccseo/public/uploads
+/tccseo/config/initializers/secret_token.rb
+TCC.idx
+TCC.aux
+TCC.lof
+TCC.log
+TCC.lot
+TCC.pdf
+TCC.synctex.gz
+TCC.toc
+*.tar.gz
