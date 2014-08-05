@@ -22,7 +22,7 @@
 					</section>
 
 					<section>
-						<div class="fb-comments" data-href="<%= root_url %>/<%= @artigo.url_amigavel %>" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
+						<div class="fb-comments" data-href="<%= root_url %>/<%= @artigo.categoria.url_amigavel %>/<%= @artigo.url_amigavel %>" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
 					</section>
 				<% end %>
 			

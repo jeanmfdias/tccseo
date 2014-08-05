@@ -1,6 +1,10 @@
 <%= content_for :seo do %>
-	<title>TCC SEO - Blog do TCC de Jean Miguel sobre SEO</title>
+	<title>TCC SEO - Blog do TCC sobre SEO de Jean Miguel</title>
   <meta name="description" content="">
+  <meta property="og:title" content="TCC SEO - Blog do TCC sobre SEO de Jean Miguel" />
+  <meta property="og:url" content="<%= root_url %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="<%= root_url %><%= image_path 'tcc-seo.png' %>" />
 <% end %>
 
 <%= render :partial => "home/nav" %>
