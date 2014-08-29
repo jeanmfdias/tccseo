@@ -19,7 +19,7 @@
 % ---
 % Pacotes básicos 
 % ---
-\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage{pslatex}			% Usa a fonte Latin Modern			
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
@@ -65,7 +65,7 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{Otimização de Sites para mecanismos de busca}
+\titulo{Otimização para motores de busca de um blog: Estudo de caso}
 \autor{Jean Miguel Ferreira Dias}
 \local{Franca}
 \data{2014}
@@ -687,7 +687,7 @@ Estes sitelinks são exatamente os links exibidos abaixo do link retornado pela 
 \begin{figure}[hbtp]
 \caption{Webmaster sitelinks}
 \centering
-\includegraphics[totalheight=0.5\textheight]{img/webmaster-sitelinks.png}
+\includegraphics[totalheight=0.3\textheight]{img/webmaster-sitelinks.png}
 \label{who}
 \legend{Fonte: Google, 2014c}
 \end{figure}
@@ -707,7 +707,16 @@ Embora o Google use algoritmos para avaliar e aprimorar regularmente a qualidade
 
 O Google (2014e) informa que caso seu website ou uma página não apareça mais nos resultados, deve-se consultar a página de Ações manuais para ver os procedimentos necessários para fazer a página voltar, e que ao realizar tais procedimentos é possível solicitar ao Google uma análise diretamente do website ou da página em questão para que ele volte aos resultados.
 
+Na página de Segmentação Internacional para o administrador do website o Google permite que caso o website tenha versões diferentes para cada idioma ou região, é possível tomar medidas para que o conteúdo em específico do website alcance o público-alvo para aquela página. Para fazer isso o Google (2014f) explica que basta adicionar uma tag de HTML no cabeçalho do website para que ele identifique qual a página recomendada para cada região. Na trecho a seguir o Google (2014f) explica três forma para fazer essa marcação.
 
+\begin{citacao}
+Para isso, é possível usar três mecanismos de implementação:
+\item \textbf{Marcação no nível da página}: Use a tag <link rel='alternate' hreflang='x' href='alternateURL'> na seção <head> das suas páginas para listar as versões alternativas de idioma de cada uma delas. Cada página deve fornecer uma tag hreflang que vincule a todas as suas outras variantes de idioma, assim como uma tag de referência que direcione para a página original. Para uma segmentação mais granular, use o atributo hreflang para indicar as combinações de idioma e país (por exemplo, en-ie, en-ca, en-us). Leia mais sobre a tag hreflang  na seção "Diretrizes de conteúdo".  
+\item \textbf{Sitemaps}: Use Sitemaps para enviar opções alternativas de idioma e região para suas páginas. Leia mais sobre o uso de Sitemaps para indicar as páginas com idiomas alternativos na seção "Diretrizes de conteúdo".
+\item \textbf{Cabeçalhos HTTP}: Se você publicar arquivos que não sejam HTML, como PDFs, use um cabeçalho HTTP para indicar uma versão em um idioma diferente de um URL.
+\end{citacao}
+
+A seção Status do índice dentro do Google Webmaster Tools 
 
 \section{Campanhas}
 
@@ -752,18 +761,29 @@ No periodo desda publicação que foi feita em 23 de Julho de 2014 o website já
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{abntex2-modelo-references}
+\bibliographystyle{abnt-alf}
 
+@book{jerkovic2009,
+publisher={O’Reilly Media},
+author={JERKOVIC, John I.},
+title={SEO Warrior},
+year={2009}}
+
+LEDFORD, Jerri L. SEO Search Engine Optimiztion Bible. 1.ed. Starlin Alta Con, 2008.
 
 GOOGLEa. Monitorar a marcação de dados estruturados. Disponível em: <https://support.google.com/webmasters/answer/2650907?hl=pt-BR>. Acesso  em: 19/08/2014.
 
-GOOGLEb. Melhoriasde HTML. Disponível em: <https://support.google.com/webmasters/answer/80407?hl=pt-BR#80407>. Acesso em: 21/08/2014
+GOOGLEb. Melhoriasde HTML. Disponível em: <https://support.google.com/webmasters/answer/80407?hl=pt-BR80407>. Acesso em: 21/08/2014
 
 GOOGLEc. Sitelinks. Disponível em: <https://support.google.com/webmasters/answer/47334?hl=pt-BR>. Acesso em: 21/08/2014
 
-GOOGLEd. Links para seu site. Disponível em: <https://support.google.com/webmasters/answer/55281?hl=pt-BR#55281>. Acesso em: 23/08/2014
+GOOGLEd. Links para seu site. Disponível em: <https://support.google.com/webmasters/answer/55281?hl=pt-BR55281>. Acesso em: 23/08/2014
 
-GOOGLEe. Ações manuais. Disponível em: <https://support.google.com/webmasters/answer/2604824?hl=pt-BR#2604824>. Acesso em: 23/08/2014
+GOOGLEe. Ações manuais. Disponível em: <https://support.google.com/webmasters/answer/2604824?hl=pt-BR2604824>. Acesso em: 23/08/2014
+
+GOOGLEf. O que é a segmentação internacional?. Disponível em: <https://support.google.com/webmasters/answer/6059209?hl=pt-BR>. Acesso em: 28/08/2014
+
+
 
 % ----------------------------------------------------------
 % Glossário
