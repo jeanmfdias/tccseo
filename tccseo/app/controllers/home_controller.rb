@@ -39,7 +39,7 @@ class HomeController < ApplicationController
         end
 
         calendarios.each do |c|
-        	@output << [url_base.to_s + 'evento' + c.url_amigavel, 'daily', '0.5']
+        	@output << [url_base.to_s + 'evento' + '/' + c.url_amigavel, 'daily', '0.5']
         end
 
         headers['Content-Type'] = 'application/xml'

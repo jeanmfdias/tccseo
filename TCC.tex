@@ -251,7 +251,7 @@
    \vspace*{\fill}
    \centering
    \noindent
-   \textit{ Este trabalho é dedicado aos corajosos que buscam\\ aumentar as visitas em seus blogs.} \vspace*{\fill}
+   \textit{ Este trabalho é dedicado aos corajosos e persistentes que buscam\\ aumentar as visitas em seus blogs e websites.} \vspace*{\fill}
 \end{dedicatoria}
 % ---
 
@@ -347,18 +347,21 @@ contribuirão para a evolução do \abnTeX.
 \begin{siglas}
   \item[SEO] Search Engine Optimiztion
   \item[SEM] Search Engine Marketing
+  \item[HTML] Hyper-Text Market Language
+  \item[URL] Uniform Resource 
+  \item[URI]
 \end{siglas}
 % ---
 
 % ---
 % inserir lista de símbolos
 % ---
-\begin{simbolos}
-  \item[$ \Gamma $] Letra grega Gama
-  \item[$ \Lambda $] Lambda
-  \item[$ \zeta $] Letra grega minúscula zeta
-  \item[$ \in $] Pertence
-\end{simbolos}
+%\begin{simbolos}
+%  \item[$ \Gamma $] Letra grega Gama
+%  \item[$ \Lambda $] Lambda
+%  \item[$ \zeta $] Letra grega minúscula zeta
+%  \item[$ \in $] Pertence
+%\end{simbolos}
 % ---
 
 % ---
@@ -608,6 +611,8 @@ Essas ferramentas são conhecidas com Google Webmaster Tools e Google Analytics.
 
 Para utilizar ambas as ferramentas é necessário possuir um conta da Google para que assim possa ter acesso ao Google Webmaster Tools e o Google Analytics. Ambas as ferramentas para que possam funcionar de acordo dentro do website e começem a capturar as informações do website para assim exibir para analise, elas precisam primeiro reconhecer o website, tarefa no qual pode ser feita tanto subindo um arquivo com o nome gerado randomicamente pelo Google na raiz do website, como também apartir de uma inserção de código nas páginas do website.
 
+\subsection{Ferramenta para o administrador do website}
+
 O Google Webmaster Tools é uma ferramenta onde é possível administrar vários websites, com isso em sua tela principal aparece uma lista com todos os websites que você administra. No painel esquerdo da ferramenta a partir do momento em que se é selecionado um website, é apresentado um menu com acesso a todas as ferramentas para administração e analise de seu website. Na tabela 2.1 é apresentado uma lista com todas as ferramentas disponíveis no Google Webmaster Tools.
 
 \begin{table}[htb]
@@ -746,6 +751,8 @@ Google Merchant Center é o local para disponibilizar dados de loja e dos produt
 PageSpeed Insights informar dados para o administrador do website poder tornar as páginas do website mais rápidas em todos os dispositivos.
 Pesquisa personalizada com este recuros o Google permite que dentro do seu próprio website tenha um caixa de pesquisa do Google que irá utilizar do motor do busca da Google para fazer pesquisas dentro do website.
 
+\subsection{Ferramenta para o profissional de marketing}
+
 Google Analytics
 
 \section{Campanhas}
@@ -758,9 +765,18 @@ Este trabalho tem como objetivo apresentar na prática os conceitos e técnicas 
 
 Como tema para o website para o ser utilizado como estudo de caso do projeto foi escolhido um blog com o tema sobre SEO, onde que este blog é referente ao tema deste trabalho. O objetivo da escolha de um blog para ser o website foi em cima do fato de que dentro de um website deste genêro é possivel explorar todos os conceitos e técnicas para otimização de um website.
 
-\section{Ferramentas Utilizadas}
+No desenvolvimento deste website que pode ser encontrado atravez do endereco de web \textit{www.tccseo.com.br} foi utilizado  tecnologias de desenvolvimento como o framework para aplicacoes web Ruby On Rails na versão 4.0.3 com sistema de gerenciamento de banco de dados o MySQL na versão 5.5, ambas as ferramentas tem ampla compatiblidade entre si posibilitando um desenvolvimento ágil desta aplicacao.
 
-Ferramentas utilizadas foram o Ruby On Rails com banco de dados MySQL hospedado em um servidor na Digital Ocean.
+A modelagem do banco de dados esta disponibilizado no anexo 1, em que é possivel observar que a base de dados constitue de apenas 4 tabelas que permitem que o website trabalhe de forma satisfatoria, que são: Usuários, Categorias, Calendário e Artigos. A modelagem do banco de dados foi utilizado o modelo de entidade de relacionamento (MER), criado por Peter Chen em 1976. 
+
+O MER de acordo com Silberschatz (2006) foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificações de um esquema organizacional que representa a lógica de um banco de dados. A partir deste modelo temos o DER (Diagrama de Entidade de Relacionamento) que permite demonstrar de forma gráfica a estrutura lógica do banco de dados.
+
+O anexo 2 apresenta os requisitos analisados para o desenvolvimento do website, neste anexo é possivel visualizar os requisitos tal como o ator responsável pela execusão do mesmo. A partir destes requisitos foi possível desenvolver a UML (Unified Modeling Language, em tradução livre Linguagem de Modelagem Unificada) desta aplicacao que pode ser encontrada no anexo 3.
+
+A UML de acordo com Guedes é uma linguagem visual para modelar sistemas por meio do paradigma de Orientação a Objetos. A partir desta premissa o Ruby linguagem de desenvolvimento criada por Yukihiro Matsumoto em 1995 segue o mesmo paradigma de orientação a objetos o torna a tradução da UML para Ruby totalmente portável.
+
+Em 2004 	a partir da linguagem de desenvolvimento Ruby uma \textit{startup} chamada 37signals criou um framework ágil  para desenvolvimento web, denominado Ruby On Rails que segundo Hartl (2012) tornou-se uma das mais poderosas e populares frameworks para desenvolvimento de aplicações web dinâmicas.
+
 
 \section{Análise de Evolução}
 
@@ -799,7 +815,15 @@ author={JERKOVIC, John I.},
 title={SEO Warrior},
 year={2009}}
 
+JERKOVIC, John I. SEO Warrior. O'Reilly Media, 2009.
+
 LEDFORD, Jerri L. SEO Search Engine Optimiztion Bible. 1.ed. Starlin Alta Con, 2008.
+
+HARTL, Michael. Ruby On Rails Tutorial. Learn Web Development with Rails. 2.ed. Addison-Wesley, 2012.
+
+GUEDES, Gilleanes T.A. UML 2. Guia Prático. Novatec, 2007.
+
+SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN,A. Sistema de Banco de Dados. 5.ed. Mc-Graw-Hill, 2006. Tradução por Daniel Vieira. Rio de Janeiro Elsevier, 2006. 
 
 GOOGLEa. Monitorar a marcação de dados estruturados. Disponível em: <https://support.google.com/webmasters/answer/2650907?hl=pt-BR>. Acesso  em: 19/08/2014.
 
