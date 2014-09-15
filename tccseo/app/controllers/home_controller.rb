@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 		urls = [
               ["1.0", "http://www.tccseo.com.br", "daily"],
               ["0.5", "http://www.tccseo.com.br/calendario", "daily"],
-              ["0.5", "http://www.tccseo.com.br/contato", "daily"],
+              ["0.5", "http://www.tccseo.com.br/sobre-o-tcc-seo", "daily"],
             ]
 
         categorias = Categoria.where(status: 1)
